@@ -1,10 +1,20 @@
 <component name="libraryTable">
   <library name="GOPATH &lt;gofind&gt;">
     <CLASSES>
+      <root url="file://$USER_HOME$/go/src/labix.org" />
       <root url="file://$USER_HOME$/go/src/gitlab.com" />
+      <root url="file://$USER_HOME$/go/src/golang.org" />
+      <root url="file://$USER_HOME$/go/src/github.com" />
+      <root url="file://$USER_HOME$/go/src/hello" />
+      <root url="file://$USER_HOME$/go/src/gopkg.in" />
     </CLASSES>
     <SOURCES>
+      <root url="file://$USER_HOME$/go/src/labix.org" />
       <root url="file://$USER_HOME$/go/src/gitlab.com" />
+      <root url="file://$USER_HOME$/go/src/golang.org" />
+      <root url="file://$USER_HOME$/go/src/github.com" />
+      <root url="file://$USER_HOME$/go/src/hello" />
+      <root url="file://$USER_HOME$/go/src/gopkg.in" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />
