@@ -165,10 +165,10 @@ func Search(mode int, path string, keyWords string) {
 
 
 func printDirResult(path string, result []string, highlight string){
-	cg.Background(cg.Yellow, false)
-	fmt.Print("    ")
-	cg.ResetColor()
-	fmt.Println(" [searching result from directory names under " + path + "]")
+	cg.Foreground(cg.Blue, false)
+	fmt.Print("\033[1m")
+	fmt.Println("==== searching result from directory names under " + path)
+	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
 		// indicates not got result
@@ -189,10 +189,10 @@ func printDirResult(path string, result []string, highlight string){
 }
 
 func printFileResult(path string, result []string, highlight string) {
-	cg.Background(cg.Yellow, false)
-	fmt.Print("    ")
-	cg.ResetColor()
-	fmt.Println(" [searching result from file names under " + path + "]")
+	cg.Foreground(cg.Blue, false)
+	fmt.Print("\033[1m")
+	fmt.Println("==== searching result from file names under " + path)
+	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
 		// indicates not got result
@@ -213,10 +213,10 @@ func printFileResult(path string, result []string, highlight string) {
 
 }
 func printContentResult(path string, result map[string][]ContentResult, highlight string) {
-	cg.Background(cg.Yellow, false)
-	fmt.Print("    ")
-	cg.ResetColor()
-	fmt.Println(" [searching result from file content names under " + path + "]")
+	cg.Foreground(cg.Blue, false)
+	fmt.Print("\033[1m")
+	fmt.Println("==== searching result from file content names under " + path + "")
+	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
 		// indicates not got result
@@ -225,13 +225,10 @@ func printContentResult(path string, result map[string][]ContentResult, highligh
 	} else {
 
 		for s, v := range result {
-			fmt.Println("")
-			cg.Background(cg.Green, false)
-			fmt.Print("    ")
-			cg.ResetColor()
-			s2 := " found file contains " + highlight + ": " + s
-			cg.HighlightAllPrintln(s2, highlight, cg.White, cg.Green)
-			cg.ResetColor()
+			fmt.Print("\033[1m")
+			s2 := "\nfound file contains " + "\x1b[1;32m" + highlight + "\x1b[0m" + "\033[1m" + ": " + "[" + s + "]"
+			fmt.Print(s2)
+			fmt.Println("\033[0m")
 
 			// cr is content result
 			for _, contentRes := range v {

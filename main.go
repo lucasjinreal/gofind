@@ -57,6 +57,10 @@ func main() {
 		}
 	}
 
+	fmt.Print("\033[1;33m")
+	fmt.Print("gofind was originally written by Jin Tian, welcome fork and star!")
+	fmt.Println("\033[0m")
+
 
 	var searchDir bool
 	var searchFile bool
