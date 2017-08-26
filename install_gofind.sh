@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo chmod -R 777 *
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
     sudo cp bin/gofind_macos /usr/local/bin/gofind
