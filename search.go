@@ -61,7 +61,7 @@ func Search(mode int, path string, keyWords string) {
 	resultFiles := []string{}
 	resultContent := map[string][]ContentResult{}
 
-	cg.PrintlnYellow("walking to searching...")
+	cg.PrintlnYellow("please waite, many files need more time...")
 	cg.HighlightPrintln("searching " + keyWords + " from " + path, keyWords, cg.Yellow, cg.Green)
 	err := filepath.Walk(path, func(path string, f os.FileInfo, err error) error {
 
@@ -167,7 +167,7 @@ func Search(mode int, path string, keyWords string) {
 func printDirResult(path string, result []string, highlight string){
 	cg.Foreground(cg.Blue, false)
 	fmt.Print("\033[1m")
-	fmt.Println("==== searching result from directory names under " + path)
+	fmt.Println("=> searching result from directory names under " + path)
 	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
@@ -178,7 +178,7 @@ func printDirResult(path string, result []string, highlight string){
 
 		// else print result one by one with highlight all
 		for _, r := range result {
-			cg.HighlightAllPrintln(r, highlight, cg.White, cg.Green)
+			cg.HighlightAllPrintln("	"+r, highlight, cg.White, cg.Green)
 		}
 		s := "Done! found all " + strconv.Itoa(len(result)) + " records contains " + highlight +
 			" in directory names under " + path
@@ -191,7 +191,7 @@ func printDirResult(path string, result []string, highlight string){
 func printFileResult(path string, result []string, highlight string) {
 	cg.Foreground(cg.Blue, false)
 	fmt.Print("\033[1m")
-	fmt.Println("==== searching result from file names under " + path)
+	fmt.Println("=> searching result from file names under " + path)
 	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
@@ -202,7 +202,7 @@ func printFileResult(path string, result []string, highlight string) {
 
 		// else print result one by one with highlight all
 		for _, r := range result {
-			cg.HighlightAllPrintln(r, highlight, cg.White, cg.Green)
+			cg.HighlightAllPrintln("	"+r, highlight, cg.White, cg.Green)
 		}
 		s := "Done! found all " + strconv.Itoa(len(result)) + " records contains " + highlight + " in directory names under " + path
 		cg.HighlightPrintln(s, highlight, cg.Blue, cg.Yellow)
@@ -215,7 +215,7 @@ func printFileResult(path string, result []string, highlight string) {
 func printContentResult(path string, result map[string][]ContentResult, highlight string) {
 	cg.Foreground(cg.Blue, false)
 	fmt.Print("\033[1m")
-	fmt.Println("==== searching result from file content names under " + path + "")
+	fmt.Println("=> searching result from file content names under " + path + "")
 	fmt.Print("\033[0m")
 
 	if len(result) == 0 {
@@ -226,13 +226,13 @@ func printContentResult(path string, result map[string][]ContentResult, highligh
 
 		for s, v := range result {
 			fmt.Print("\033[1m")
-			s2 := "\nfound file contains " + "\x1b[1;32m" + highlight + "\x1b[0m" + "\033[1m" + ": " + "[" + s + "]"
+			s2 := "        found file contains " + "\x1b[1;32m" + highlight + "\x1b[0m" + "\033[1m" + ": " + "[" + s + "]"
 			fmt.Print(s2)
 			fmt.Println("\033[0m")
 
 			// cr is content result
 			for _, contentRes := range v {
-				cg.PrintYellow("line " + strconv.Itoa(contentRes.LineNumber) + ": ")
+				cg.PrintYellow("            line " + strconv.Itoa(contentRes.LineNumber) + ": ")
 				cg.HighlightAllPrintln(contentRes.Line, highlight, cg.White, cg.Green)
 			}
 		}

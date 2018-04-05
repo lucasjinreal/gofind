@@ -25,7 +25,7 @@ const (
 
 // Set Global Variable
 var usr, _ = user.Current()
-var goFindConfigDir = filepath.Join(usr.HomeDir, ".gofind")
+var goFindConfigDir = filepath.Join(usr.HomeDir, ".config")
 
 
 func showInfo() {
